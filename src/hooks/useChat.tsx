@@ -49,10 +49,10 @@ const useChat = () => {
         Header: "Time Send",
         accessor: "time_send",
       },
-      {
-        Header: "Actions",
-        accessor: "actions",
-      },
+      // {
+      //   Header: "Actions",
+      //   accessor: "actions",
+      // },
     ],
     []
   );
@@ -142,51 +142,51 @@ const useChat = () => {
             deletedMessage?.relationships?.receiver?.attributes?.name,
           receiver_email:
             deletedMessage?.relationships?.receiver?.attributes?.email,
-          actions: (
-            <div className={`flex w-full items-center  gap-2  `}>
-              <Button
-                title="Delete"
-                intent="danger"
-                type="small"
-                purpose={() => {
-                  // setIsEditingNormalUser(true);
-                  // setGlobalNormalUser(user);
-                  // setShowCreateOrEditNormalUserWidget(true);
-                }}
-                // disabled={authenticatedUser?.role === "authority" && true}
-              />
+          // actions: (
+          //   <div className={`flex w-full items-center  gap-2  `}>
+          //     <Button
+          //       title="Delete"
+          //       intent="danger"
+          //       type="small"
+          //       purpose={() => {
+          //         // setIsEditingNormalUser(true);
+          //         // setGlobalNormalUser(user);
+          //         // setShowCreateOrEditNormalUserWidget(true);
+          //       }}
+          //       // disabled={authenticatedUser?.role === "authority" && true}
+          //     />
 
-              <Button
-                title="Report"
-                intent="secondary"
-                type="small"
-                purpose={() => {
-                  // setIsEditingNormalUser(true);
-                  // setGlobalNormalUser(user);
-                  // setShowCreateOrEditNormalUserWidget(true);
-                }}
-                // disabled={authenticatedUser?.role === "authority" && true}
-              />
+          //     <Button
+          //       title="Report"
+          //       intent="secondary"
+          //       type="small"
+          //       purpose={() => {
+          //         // setIsEditingNormalUser(true);
+          //         // setGlobalNormalUser(user);
+          //         // setShowCreateOrEditNormalUserWidget(true);
+          //       }}
+          //       // disabled={authenticatedUser?.role === "authority" && true}
+          //     />
 
-              <Button
-                title="Block Sender"
-                intent="link"
-                type="small"
-                purpose={() => {
-                  // setIsEditingNormalUser(true);
-                  // setGlobalNormalUser(user);
-                  // setShowCreateOrEditNormalUserWidget(true);
-                }}
-                // disabled={authenticatedUser?.role === "authority" && true}
-              />
-              {/* <DeleteNormalUser
-                data={{
-                  item: user?.attributes?.uuid,
-                }}
-                disabled={authenticatedUser?.role === "authority" && true}
-              /> */}
-            </div>
-          ),
+          //     <Button
+          //       title="Block Sender"
+          //       intent="link"
+          //       type="small"
+          //       purpose={() => {
+          //         // setIsEditingNormalUser(true);
+          //         // setGlobalNormalUser(user);
+          //         // setShowCreateOrEditNormalUserWidget(true);
+          //       }}
+          //       // disabled={authenticatedUser?.role === "authority" && true}
+          //     />
+          //     {/* <DeleteNormalUser
+          //       data={{
+          //         item: user?.attributes?.uuid,
+          //       }}
+          //       disabled={authenticatedUser?.role === "authority" && true}
+          //     /> */}
+          //   </div>
+          // ),
         },
       ];
     });

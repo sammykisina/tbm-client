@@ -5,6 +5,7 @@ import {
   DeleteNormalUser,
   Icon,
   Notifications,
+  SendBullyWarning,
 } from "@/components";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
@@ -161,13 +162,12 @@ const useUsers = () => {
                   setGlobalNormalUser(user);
                   setShowCreateOrEditNormalUserWidget(true);
                 }}
-                disabled={authenticatedUser?.role === "authority" && true}
+                hidden={authenticatedUser?.role === "authority" && true}
               />
               <DeleteNormalUser
                 data={{
                   item: user?.attributes?.uuid,
                 }}
-                disabled={authenticatedUser?.role === "authority" && true}
               />
 
               <Button
@@ -178,7 +178,7 @@ const useUsers = () => {
                 }`}
                 type="small"
                 intent="link"
-                disabled={authenticatedUser?.role === "authority" && true}
+                hidden={authenticatedUser?.role === "authority" && true}
                 purpose={() =>
                   blockMutateAsync({
                     blockingUser: authenticatedUser?.uuid || "",
@@ -186,13 +186,13 @@ const useUsers = () => {
                   })
                 }
               />
+
+              <SendBullyWarning bullyUuid={user?.attributes?.uuid} />
             </div>
           ),
         },
       ];
     });
-
-    console.log("all_users", all_users);
 
     return all_users;
   };

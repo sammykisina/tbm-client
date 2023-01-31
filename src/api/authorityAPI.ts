@@ -21,6 +21,14 @@ const AuthorityAPI = {
       notificationId: data.notificationId,
       message: data.message,
     }),
+  sendBullyWarning: async (data: {
+    authorityUuid: string;
+    bullyUuid: string;
+  }) =>
+    API.post(
+      `/authority/warnings/${data.authorityUuid}/users/${data.bullyUuid}`,
+      {}
+    ),
 };
 
 export default AuthorityAPI;

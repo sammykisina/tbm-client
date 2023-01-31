@@ -21,6 +21,9 @@ const button_styles = cva(
         true: "w-full",
         false: "w-fit",
       },
+      hidden: {
+        true: "hidden",
+      },
     },
     defaultVariants: {
       intent: "primary",
@@ -45,12 +48,13 @@ const Button: FC<ButtonProps> = ({
   purpose,
   icon_wrapper_styles,
   disabled,
+  hidden,
 }) => {
   return (
     <button
       onClick={purpose}
       type="submit"
-      className={button_styles({ intent, full_width, type })}
+      className={button_styles({ intent, full_width, type, hidden })}
       disabled={disabled}
     >
       {icon && <span className={`${icon_wrapper_styles}`}>{icon}</span>}

@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { Button, SpinnerLoader } from "@/components";
-import { useUsers } from "@/hooks";
+import { useAuth, useUsers } from "@/hooks";
 
 type DeleteNormalUserProps = {
   data: {
@@ -13,6 +13,7 @@ type DeleteNormalUserProps = {
 const DeleteNormalUser: FC<DeleteNormalUserProps> = ({ data, disabled }) => {
   // component states
   const { deleteMutateAsync, isDeleting } = useUsers();
+  const { user } = useAuth();
 
   return (
     <Button
@@ -27,6 +28,7 @@ const DeleteNormalUser: FC<DeleteNormalUserProps> = ({ data, disabled }) => {
       type="small"
       purpose={() => deleteMutateAsync(data.item || "")}
       disabled={disabled}
+      hidden={user?.role === "authority" && true}
     />
   );
 };

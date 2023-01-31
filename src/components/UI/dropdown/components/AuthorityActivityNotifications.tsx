@@ -26,7 +26,7 @@ const AuthorityActivityNotifications: FC<
       ) : (
         <div>
           {/* title */}
-          <div className="flex items-center justify-between border-b py-2 px-1">
+          <div className="flex  items-center justify-between border-b py-2 px-1">
             <TabTittle title="Reports" title_styles="text-gray-800" />
           </div>
           {/* body */}

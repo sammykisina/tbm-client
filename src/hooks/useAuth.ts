@@ -27,9 +27,10 @@ const useAuth = () => {
     },
 
     onSuccess: async (data: any) => {
-      Cookies.set("user-uuid", data?.user?.uuid);
-      await redirectToVerify();
-      Notifications.successNotification(data?.message);
+      // Cookies.set("user-uuid", data?.user?.uuid);
+      // await redirectToVerify();
+      // Notifications.successNotification(data?.message);
+      await afterLoginOrRegisterSuccessfully(data);
     },
   });
 

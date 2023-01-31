@@ -12,6 +12,7 @@ import {
   Profile,
   SpinnerLoader,
   Title,
+  UserNotifications,
 } from "@/components";
 import {
   HiBell,
@@ -115,37 +116,39 @@ const TopHeader = () => {
         {/* the current user dropdown */}
         {user ? (
           <div className="flex ">
-            <div className={`${user?.role === "user" && "hidden"}`}>
-              <Dropdown
-                active={
-                  <HiBell
-                    className={`icon  hover:text-c_yellow ${
-                      showNotificationDropdown && "text-c_yellow"
-                    }`}
+            <Dropdown
+              active={
+                <HiBell
+                  className={`icon  hover:text-c_yellow ${
+                    showNotificationDropdown && "text-c_yellow"
+                  }`}
+                />
+              }
+              inactive={
+                <HiOutlineBell
+                  className={`icon  hover:text-c_yellow ${
+                    showNotificationDropdown && "text-c_yellow"
+                  }`}
+                />
+              }
+              dropdown_component={
+                user?.role === "admin" ? (
+                  <AdminActivityNotifications
+                    setDisplayState={setShowNotificationDropdown}
                   />
-                }
-                inactive={
-                  <HiOutlineBell
-                    className={`icon  hover:text-c_yellow ${
-                      showNotificationDropdown && "text-c_yellow"
-                    }`}
+                ) : user?.role === "authority" ? (
+                  <AuthorityActivityNotifications
+                    setDisplayState={setShowNotificationDropdown}
                   />
-                }
-                dropdown_component={
-                  user?.role === "admin" ? (
-                    <AdminActivityNotifications
-                      setDisplayState={setShowNotificationDropdown}
-                    />
-                  ) : (
-                    <AuthorityActivityNotifications
-                      setDisplayState={setShowNotificationDropdown}
-                    />
-                  )
-                }
-                display_state={showNotificationDropdown}
-                setDisplayState={setShowNotificationDropdown}
-              />
-            </div>
+                ) : (
+                  <UserNotifications
+                    setDisplayState={setShowNotificationDropdown}
+                  />
+                )
+              }
+              display_state={showNotificationDropdown}
+              setDisplayState={setShowNotificationDropdown}
+            />
 
             <Dropdown
               inactive={

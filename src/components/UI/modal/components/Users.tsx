@@ -21,12 +21,18 @@ const Users = () => {
   const usersExcludingTheCurrentUser = users?.filter(
     (user: any) => user?.attributes?.uuid !== currentLoggedInUser?.uuid
   );
+  const usersExcludingTheAdmin = usersExcludingTheCurrentUser?.filter(
+    (user: any) => user?.relationships?.role?.attributes?.slug !== "admin"
+  );
+
+  const usersExcludingTheAuthority = usersExcludingTheAdmin?.filter(
+    (user: any) => user?.relationships?.role?.attributes?.slug !== "authority"
+  );
 
   const { showSelectUserForChatModalState } = users_atoms;
   const setShowSelectUserForChatModal = useSetRecoilState(
     showSelectUserForChatModalState
   );
-
 
   return (
     <section>
@@ -49,7 +55,7 @@ const Users = () => {
         ) : usersExcludingTheCurrentUser?.length > 0 ? (
           <>
             <div className="flex h-[21rem] flex-col gap-2 overflow-y-scroll px-4 py-2 scrollbar-hide">
-              {usersExcludingTheCurrentUser.map(
+              {usersExcludingTheAuthority.map(
                 (user: any, userIndex: number) => (
                   <div
                     key={userIndex}

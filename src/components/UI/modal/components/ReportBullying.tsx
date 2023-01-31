@@ -34,8 +34,6 @@ const ReportBullying = () => {
   const { isReportingBullying, reportBullyingMutateAsync } = useAuthority();
   const { user } = useAuth();
 
-  console.log("not", globalNotification);
-
   return (
     <section>
       {/* header */}

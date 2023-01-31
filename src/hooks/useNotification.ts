@@ -15,11 +15,17 @@ const useNotification = () => {
       const [_, user_uuid, role] = queryKey;
 
       if (user_uuid && role) {
-        if (role === "admin" || role === "user") {
-          return await NotificationAPI.getNotifications(user_uuid);
+        if (role === "admin") {
+          return await NotificationAPI.getAdminNotifications(user_uuid);
         }
 
-        return await NotificationAPI.getAuthorityReports(user_uuid);
+        if (role === "user") {
+          return await NotificationAPI.getUserNotifications(user_uuid);
+        }
+
+        if (role === "authority") {
+          return await NotificationAPI.getAuthorityReports(user_uuid);
+        }
       }
 
       return [];

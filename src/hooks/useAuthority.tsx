@@ -177,6 +177,21 @@ const useAuthority = () => {
 
     return all_authorities;
   };
+
+  const {
+    mutateAsync: sendBullyWarningMutateAsync,
+    isLoading: isSendingBullyWarning,
+  } = useMutation({
+    mutationFn: (data: { authorityUuid: string; bullyUuid: string }) => {
+      return AuthorityAPI.sendBullyWarning(data);
+    },
+
+    onSuccess: async (data) => {
+      queryClient.invalidateQueries({ queryKey: ["notifications"] });
+      Notifications.successNotification(data.message);
+    },
+  });
+
   return {
     modifyUsersData,
     authority_user_columns,
@@ -188,6 +203,8 @@ const useAuthority = () => {
     isEditingAuthorityUser,
     reportBullyingMutateAsync,
     isReportingBullying,
+    sendBullyWarningMutateAsync,
+    isSendingBullyWarning,
   };
 };
 

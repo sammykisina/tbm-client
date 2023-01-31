@@ -24,6 +24,7 @@ export { default as Modal } from "./UI/modal/Modal";
 export { default as Profile } from "./UI/dropdown/components/Profile";
 export { default as AdminActivityNotifications } from "./UI/dropdown/components/AdminActivityNotifications";
 export { default as AuthorityActivityNotifications } from "./UI/dropdown/components/AuthorityActivityNotifications";
+export { default as UserNotifications } from "./UI/dropdown/components/UserNotifications";
 
 /**
  * tab components
@@ -72,3 +73,4 @@ export { default as Message } from "./reusable/chat/Message";
 export { default as SingleNotification } from "./reusable/SingleNotification";
 export { default as Report } from "./reusable/Report";
 export { default as Info } from "./reusable/Info";
+export { default as SendBullyWarning } from "./reusable/SendBullyWarning";
